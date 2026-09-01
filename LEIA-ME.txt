@@ -1,0 +1,22 @@
+ML RADAR PRO v14.0 — MERCADO LIVRE EMBUTIDO
+
+O QUE MUDOU
+- Não existe mais popup/janela runner.
+- O Mercado Livre REAL abre dentro do quadro da lateral do próprio dashboard.
+- O quadro renderiza o site em largura de desktop e apenas reduz visualmente, para manter os cards e a paginação.
+- O motor de leitura continua usando os cards reais e o botão real “Seguinte”.
+- A busca para imediatamente quando encontra o MLB/MLBU alvo.
+
+INSTALAÇÃO
+1. Desative as versões anteriores para evitar conflito.
+2. Extraia esta pasta.
+3. Chrome > chrome://extensions/ > Modo do desenvolvedor.
+4. Carregar sem compactação > selecione esta pasta.
+5. Clique no ícone ML Radar PRO. Ele abrirá em uma guia normal.
+6. Aguarde o ponto “Mercado Livre real” ficar verde.
+7. Clique em “Testar Mercado Livre”.
+
+IMPORTANTE SOBRE O HTML DO SITE
+O arquivo site.html/ML-Radar-PRO-v14-Site-Embedded.html pode ser integrado ao onovoseller.com.br, mas a extensão v14 precisa continuar instalada. Um site comum não consegue, sozinho, remover o bloqueio de iframe do Mercado Livre nem ler o DOM cross-origin. A extensão faz esse papel de conector.
+
+Se o seu site usa Content-Security-Policy próprio, permita frame-src para https://*.mercadolivre.com.br.

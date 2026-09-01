@@ -1,0 +1,69 @@
+{
+  "manifest_version": 3,
+  "name": "ML Radar PRO v14.1 - Embutido Estável",
+  "version": "14.1.0",
+  "description": "Ranking orgânico com Mercado Livre embutido, campo MLB persistente e rolagem isolada do dashboard.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://mercadolivre.com.br/*",
+    "https://*.mercadolivre.com.br/*",
+    "https://api.mercadolibre.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "embed_rules",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lista.mercadolivre.com.br/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://onovoseller.com.br/*",
+        "https://*.onovoseller.com.br/*",
+        "http://localhost/*",
+        "https://localhost/*"
+      ],
+      "js": [
+        "site-bridge.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Abrir ML Radar PRO"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-src https://mercadolivre.com.br https://*.mercadolivre.com.br;"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "site.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

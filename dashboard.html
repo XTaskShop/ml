@@ -1,0 +1,40 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ML Radar PRO</title><link rel="stylesheet" href="dashboard.css"></head><body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">◉</div><div><b>ML Radar PRO</b><small>Ranking Orgânico</small></div></div>
+  <nav><a class="active" href="#overview">📊 Dashboard</a><a href="#keywords">🔎 Palavras-chave</a><a href="#history">📈 Evolução</a></nav>
+  <div class="live-runner embedded-runner">
+    <div class="live-head"><div><span id="runnerDot" class="dot"></span><b>Mercado Livre real</b></div><span id="livePage" class="pagepill">—</span></div>
+    <p id="runnerStatus">Carregando dentro do painel...</p>
+    <div class="ml-viewport" id="mlViewport">
+      <div class="ml-stage">
+        <iframe id="mlFrame" title="Mercado Livre" src="https://lista.mercadolivre.com.br/" loading="eager" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+      </div>
+      <div id="frameLock" class="frame-lock"><span>Leitor automático</span></div>
+    </div>
+    <div class="runner-actions"><button id="reloadFrame">Recarregar</button><button id="toggleFrame">Interagir</button></div>
+    <small class="runner-note">É o Mercado Livre de verdade, reduzido dentro desta página. O robô lê e clica em “Seguinte” nesse próprio quadro.</small>
+  </div>
+  <div class="version">v14.1 • Embutido estável</div>
+</aside>
+<main class="main">
+<header class="topbar" id="overview"><div><span class="crumb">📣 Ranking Orgânico →</span> <b id="productHeader">Defina seu anúncio</b><small id="productSub">Medição objetiva da posição por palavra-chave.</small></div><div class="topactions"><label>Velocidade <select id="speedMode"><option value="fast" selected>Rápido seguro</option><option value="safe">Estável</option><option value="turbo">Turbo</option></select></label><button id="testPage" class="btn dark">Testar Mercado Livre</button></div></header>
+<section class="kpis">
+  <article class="kpi cyan"><small>MELHOR POSIÇÃO</small><b id="best">—</b><em id="bestKw">sem dados</em></article>
+  <article class="kpi blue"><small>POSIÇÃO MÉDIA</small><b id="avg">—</b><em id="coverage">0 termos encontrados</em></article>
+  <article class="kpi green"><small>NO TOP 10</small><b id="top10">0</b><em>palavras-chave</em></article>
+  <article class="kpi yellow"><small>PRÓXIMAS DO TOP 10</small><b id="nearTop10">0</b><em>posição 11–30</em></article>
+  <article class="kpi teal"><small>EM ALTA</small><b id="gaining">0</b><em>vs. medição anterior</em></article>
+  <article class="kpi orange"><small>EM QUEDA</small><b id="falling">0</b><em>vs. medição anterior</em></article>
+</section>
+<section class="panel" id="keywords"><div class="panel-head"><div><span class="section-label">1. ANÚNCIO E TERMOS</span><h2>Monitor de posicionamento</h2></div><span id="savedCount" class="badge">0 salvas</span></div>
+<div class="formgrid"><div><label>MLB ou link exato</label><div class="inputrow"><input id="target" placeholder="MLB1234567890"><button id="resolve" class="btn cyanbtn">Identificar</button></div><div id="targetInfo" class="status">Defina o anúncio que será procurado.</div><button id="clearTarget" class="linkbtn">Limpar anúncio</button></div><div><label>Palavras-chave (uma por linha)</label><textarea id="keywordsInput" placeholder="extrator de cravos
+kit extrator de cravos
+removedor de cravos"></textarea><div class="inline"><button id="analyze" class="btn yellow grow">Analisar agora</button><button id="analyzeSaved" class="btn dark">Atualizar salvas</button></div></div></div>
+<div class="runnerline"><span id="runnerLiveTitle">Mercado Livre embutido</span><small id="runnerLiveText">O Mercado Livre acima é o próprio motor de leitura; não existe popup externo.</small><div id="readStatus"></div></div></section>
+<section id="scanCard" class="panel scan hidden"><div class="panel-head"><div><span class="section-label">EM TEMPO REAL</span><h2 id="scanText">Preparando...</h2></div><button id="cancel" class="btn danger">Parar</button></div><div class="progress"><i id="bar"></i></div><div class="scan-kpis"><div><small>PALAVRA</small><b id="scanKeyword">—</b></div><div><small>PÁGINA</small><b id="scanPage">—</b></div><div><small>VERIFICADOS</small><b id="scanChecked">—</b></div><div><small>MODO</small><b id="scanMode">RÁPIDO</b></div></div></section>
+<section class="panel"><div class="panel-head"><div><span class="section-label">2. RESULTADOS</span><h2>Métricas objetivas por palavra</h2></div><div class="inline"><button id="csv" class="btn dark">Exportar CSV</button><button id="clearHistory" class="btn danger">Limpar tudo</button></div></div><div id="metricsTable" class="rank-table"><div class="emptyrow">Nenhuma palavra monitorada.</div></div></section>
+<div class="twocol"><section class="panel"><div class="panel-head"><div><span class="section-label">3. COMPARAÇÃO</span><h2>Posição atual por palavra</h2></div><span class="badge">menor = melhor</span></div><div class="chartbox"><canvas id="chart"></canvas><div id="chartEmpty" class="empty">Ainda não há posição salva.</div></div></section><section class="panel" id="history"><div class="panel-head"><div><span class="section-label">4. HISTÓRICO</span><h2>Evolução da palavra</h2></div><select id="historySelect"></select></div><div class="chartbox"><canvas id="historyChart"></canvas><div id="historyEmpty" class="empty">Faça 2 medições da mesma palavra.</div></div></section></div>
+<section class="panel action-panel"><div class="panel-head"><div><span class="section-label">5. FOCO</span><h2>Onde agir primeiro</h2></div></div><div id="focusBox" class="focusbox">Faça medições para identificar os termos mais próximos do Top 10 e as maiores quedas.</div></section>
+<footer>Posição = ordem visual dos cards percorridos até o seu anúncio. “À frente” = posição − 1. Variação = posição anterior − posição atual. O ranking pode variar por sessão, localização e personalização do Mercado Livre.</footer>
+</main></div><script src="dashboard.js"></script></body></html>
